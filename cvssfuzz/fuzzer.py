@@ -76,7 +76,7 @@ class CVSSFuzz:
     
     def shuffle_combination(self, combination):
         """
-        Shuffles a combination. This is allowed per spec.
+        Shuffles a combination.
         CVSS tools should be able to handle varied ordering of the vector string.
         CVSS 4.0 spec section 7 "A vector string must contain metrics in the order shown in Table 23, every other ordering is invalid."
         """
