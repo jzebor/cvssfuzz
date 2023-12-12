@@ -20,9 +20,9 @@ To use CVSS Fuzz, import the package and use its provided functions. Below is a 
 ```python
 from cvssfuzz import CVSSFuzz
 
-fuzzer = Fuzzer()
+fuzzer = CVSSFuzz()
 config = {'iterations': 10000, "category": "base", "fuzzer": "random", "version": "4.0"}
-for vector in fuzzer.run(config):
+for vector in fuzzer(config):
     print(vector) 
     # your code here
 ```

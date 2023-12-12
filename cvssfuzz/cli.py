@@ -2,15 +2,14 @@ import argparse
 import sys
 import logging
 
-from cvssfuzz.fuzzer import CVSSFuzz
-from cvssfuzz import settings
+from cvssfuzz import CVSSFuzz, settings
 
 settings.setup_logging()
 LOG = logging.getLogger(__name__)
 
 def main(config):
     fuzz = CVSSFuzz(config=config)
-    for fuzzed_value in fuzz.run():
+    for fuzzed_value in fuzz():
         print(fuzzed_value)  # using print in cli just to get rid of all the logging prefix stuff.
 
 if __name__ == "__main__":
