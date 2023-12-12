@@ -38,7 +38,7 @@ cvssfuzz --help
 CVSS Fuzz can be configured to suit various testing needs. Refer to the settings.py file for configurable parameters.
 
 ### Iterations
-Iterations is just as it sounds. Configuration how many fuzzed vectors you want. Choosing a value of 0 causes it to run forever. CAUTION: Choosing a value of 0 can lead to out of memory conditions. Be mindful until I fix that part in the code.
+Iterations is just as it sounds. The option is for configuring the total of fuzzed vectors you want. Choosing a value of 0 causes it to run forever. CAUTION: Choosing a value of 0 can lead to out of memory conditions. Be mindful until I fix that part in the code.
 
 ### Fuzzers
 Fuzzers can be configured to use one of the following options.
