@@ -29,7 +29,7 @@ for vector in fuzzer(config):
     # your code here
 ```
 
-### As a stand-alone command line utility.
+### As a stand-alone command line utility (Work in Progress)
 ```
 cvssfuzz --help
 ```
