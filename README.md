@@ -17,7 +17,7 @@ pip install git+https://github.com/jzebor/cvzzfuzz
 
 ## Usage
 ### As a module in your test code
-To use CVSS Fuzz, import the package and use its provided functions. Below is a basic example:
+To use CVSS Fuzz, import the package and use its provided functions. The fuzzer object is a callable generator. Below is a basic example:
 
 ```python
 from cvssfuzz import CVSSFuzz
@@ -32,44 +32,51 @@ for vector in fuzzer(config):
 ### As a stand-alone command line utility.
 ```
 cvssfuzz --help
-
 ```
 
-
 ## Configuration
-CVSS Fuzz can be configured to suit various testing needs. Refer to the config.py file for configurable parameters.
+CVSS Fuzz can be configured to suit various testing needs. Refer to the settings.py file for configurable parameters.
+
+### Iterations
+Iterations is just as it sounds. Configuration how many fuzzed vectors you want. Choosing a value of 0 causes it to run forever. CAUTION: Choosing a value of 0 can lead to out of memory conditions. Be mindful until I fix that part in the code.
+
 ### Fuzzers
-- Random: Random entries taken from valid values per metric. All output should be valid CVSS vector strings.
-- Shuffle: Shuffles a randomly generated string.  All output should be valid CVSS vector strings, just in a shuffled order.
-- Invalid: Insert an invalid metric value for a random metric.
-- Insane: A random metric is chosen and substituted with an bad value (hex, url encoded, base64 encoded, etc)
-- Missing: Drop a random metric from the vector.
-- Duplicate: Duplicate a random metric from the vector.
-- Lowecase: Lowercase a random metric from the vector.
-- Missing Prefix: Drop the version prefix.
+Fuzzers can be configured to use one of the following options.
+
+- random: Random entries taken from valid values per metric. All output should be valid CVSS vector strings.
+- shuffle: Shuffles a randomly generated string.  All output should be valid CVSS vector strings, just in a shuffled order.
+- invalid: Insert an invalid metric value for a random metric.
+- insane: A random metric is chosen and substituted with an bad value (hex, url encoded, base64 encoded, etc)
+- missing: Drop a random metric from the vector.
+- duplicate: Duplicate a random metric from the vector.
+- lowecase: Lowercase a random metric from the vector.
+- missing: Drop a random metric from the vector.
+- missing_prefix: Drop the version prefix from the vector.
+
+### Versions
+Versions dictate the version to use for fuzzing. Currently only CVSS 4.0 and CVSS 3.1 are supported.
 
 ### Categories
+Categories are how you can define which specific metric groups to fuzz.
+
 #### CVSS 4.0
-- Base: Just the base metrics (CVSS 4.0 OR CVSS 3.1)
-- Threat: Base + Threat (CVSS 4.0)
-- Environmental: Base + Environmental (CVSS 4.0)
-- Supplemental: Base + Threat + Environmental + Supplemental (CVSS 4.0)
-- All: Base + Threat + Environmental + Supplemental (CVSS 4.0)
+- Base: Just the base metrics
+- Threat: Base + Threat
+- Environmental: Base + Environmental
+- Supplemental: Base + Threat + Environmental + Supplemental
+- All: Base + Threat + Environmental + Supplemental
 
 #### CVSS 3.1
-- Base: Just the base metrics (CVSS 3.1)
+- Base: Just the base metrics
 - Temporal: Base + Temporal
 - Environmental: Base + Environmental
 - All: Base + Temporal + Environmental
 
 ## Contributing
-Contributions to CVSS Fuzz are welcome! Please read the CONTRIBUTING.md file for guidelines on how to contribute.
+Contributions to CVSS Fuzz are welcome!
 
 ## License
-CVSS Fuzz is licensed under the MIT License. See the LICENSE file for more information.
-
-## Security
-Open a security issue and it will be dealt with promptly.
+CVSS Fuzz is licensed under the BSD 2-Clause License. See the LICENSE file for more information.
 
 ## Defects and Security Issues
 For defects, feature requests and generally non-security related issues please open an issue.
