@@ -18,10 +18,11 @@ pip install cvzzfuzz
 To use CVSS Fuzz, import the package and use its provided functions. Below is a basic example:
 
 ```python
-from cvssfuzz import Fuzzer
+from cvssfuzz import CVSSFuzz
 
 fuzzer = Fuzzer()
-for vector in fuzzer.run():
+config = {'iterations': 10000, "category": "base", "fuzzer": "random", "version": "4.0"}
+for vector in fuzzer.run(config):
     print(vector) 
     # your code here
 ```
