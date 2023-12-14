@@ -9,7 +9,7 @@ LOG = logging.getLogger(__name__)
 
 def main(config):
     fuzz = CVSSFuzz(config=config)
-    for fuzzed_value in fuzz():
+    for fuzzed_value in fuzz.run():
         print(fuzzed_value)  # using print in cli just to get rid of all the logging prefix stuff.
 
 if __name__ == "__main__":

@@ -85,4 +85,4 @@ CVSS Fuzz is licensed under the BSD 2-Clause License. See the LICENSE file for m
 
 ## Defects and Security Issues
 For defects, feature requests and generally non-security related issues please open an issue.
-For security issues, please open a security issue and it will be dealt with promptly.
+For security issues, please see SECURITY.md 
