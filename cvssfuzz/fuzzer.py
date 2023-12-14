@@ -240,7 +240,7 @@ class CVSSFuzz:
             case _:
                 return self.get_random_combination()
 
-    def __call__(self):
+    def run(self):
         """
         Generator that yields fuzzed CVSS vectors one at a time.
         Caution: if you set iterations to 0, this will run forever and might use up all available memory on a system.
@@ -252,5 +252,5 @@ class CVSSFuzz:
             while True:
                 yield self.__fuzz()
     
-    def run(self):
-        self.__call__()
+    def __call__(self):
+        self.run()
