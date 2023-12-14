@@ -1,0 +1,1 @@
+Please report security vulnerabilities through GitHub private vulnerability reporting.
