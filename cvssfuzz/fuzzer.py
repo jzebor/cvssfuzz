@@ -67,8 +67,24 @@ class CVSSFuzz:
                     category_keys = self.metric_categories['base'] + \
                                     self.metric_categories['temporal'] + \
                                     self.metric_categories['environmental']
+        
+        elif self.config['version'] == '2.0':
+            match self.config['category']:
+                case 'all':
+                    category_keys = self.metric_categories['base'] + \
+                                    self.metric_categories['temporal'] + \
+                                    self.metric_categories['environmental']
+                case 'base':
+                    category_keys = self.metric_categories['base']
+                case 'temporal':
+                    category_keys = self.metric_categories['base'] + self.metric_categories['temporal']
+                case 'environmental':
+                    category_keys = self.metric_categories['base'] + self.metric_categories['environmental']
+                case _:
+                    category_keys = self.metric_categories['base'] + \
+                                    self.metric_categories['temporal'] + \
+                                    self.metric_categories['environmental']
 
-                        
         random_combination = {key: random.choice(self.metrics_values[key]) for key in list(self.metrics_values.keys()) if key in category_keys}
         final_vector = f'CVSS:{self.config["version"]}/' + '/'.join([f"{k}:{v}" for k, v in random_combination.items()])
         LOG.debug(f"Random Vector: {final_vector}")
@@ -235,3 +251,6 @@ class CVSSFuzz:
         elif self.config.get('iterations') == 0: # run forever..... 
             while True:
                 yield self.__fuzz()
+    
+    def run(self):
+        self.__call__()

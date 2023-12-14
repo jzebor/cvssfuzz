@@ -114,5 +114,29 @@ metrics = {
         "temporal": ["E", "RL", "RC"],
         "environmental": ["CR", "IR", "AR", "MAV", "MAC", "MPR", "MUI", "MS", "MC", "MI", "MA"]
     }
+    },
+    "2.0": {
+        "identifier": "CVSS:2.0",
+        "values" : {
+            'AV': ['N', 'A', 'L'],
+            'AC': ['L', 'M', 'H'],
+            'AU': ['M', 'S', 'N'],
+            'C': ['C', 'P', 'N'],
+            'I': ['C', 'P', 'N'],
+            'A': ['C', 'P', 'N'],
+            'E': ['U', 'POC', 'F', 'H', 'ND'],
+            'RL': ['OF', 'TF', 'W', 'U', 'ND'],
+            'RC': ['UC', 'UR', 'C', 'ND'],
+            'CDP': ['N', 'L', 'LM', 'MH', 'H', 'ND'],
+            'TD': ['N', 'L' 'M', 'H', 'ND'],
+            'CR': ['L', 'M', 'H', 'ND'],
+            'CI': ['L', 'M', 'H', 'ND'],
+            'CA': ['L', 'M', 'H', 'ND'],
+    },
+    "categories" : {
+        "base": ["AV", "AC", "AU", "C", "I", "A"],
+        "temporal": ["E", "RL", "RC"],
+        "environmental": ["CDP", "TD", "CR", "CI", "CA"]
+    }
     }
 }
