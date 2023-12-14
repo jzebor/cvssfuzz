@@ -54,7 +54,7 @@ Fuzzers can be configured to use one of the following options.
 - missing_prefix: Drop the version prefix from the vector.
 
 ### Versions
-Versions dictate the version to use for fuzzing. Currently only CVSS 4.0 and CVSS 3.1 are supported.
+Versions dictate the version to use for fuzzing. Currently CVSS 4.0, CVSS 3.1, & CVSS 2.0 are supported.
 
 ### Categories
 Categories are how you can define which specific metric groups to fuzz.
@@ -67,6 +67,12 @@ Categories are how you can define which specific metric groups to fuzz.
 - All: Base + Threat + Environmental + Supplemental
 
 #### CVSS 3.1
+- Base: Just the base metrics
+- Temporal: Base + Temporal
+- Environmental: Base + Environmental
+- All: Base + Temporal + Environmental
+
+#### CVSS 2.0
 - Base: Just the base metrics
 - Temporal: Base + Temporal
 - Environmental: Base + Environmental
