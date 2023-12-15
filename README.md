@@ -1,7 +1,7 @@
 # CVSS Fuzz
 
 ## Introduction
-CVSS Fuzz is a Python package designed for fuzzing implementations that utilize the Common Vulnerability Scoring System (CVSS). It aims to test and validate CVSS-related applications, ensuring robustness and reliability against a variety of inputs. Currently supports CVSS 4.0 and CVSS 3.1.
+CVSS Fuzz is a Python package designed for fuzzing implementations that utilize the Common Vulnerability Scoring System (CVSS). It aims to test and validate CVSS-related applications, ensuring robustness and reliability against a variety of inputs. Currently supports CVSS 4.0 and CVSS 3.1, CVSS 2.0.
 
 ## Features
 - Generation of fuzzed CVSS vectors.
@@ -17,8 +17,7 @@ pip install git+https://github.com/jzebor/cvzzfuzz
 
 ## Usage
 ### As a module in your test code
-To use CVSS Fuzz, import the package and use its provided functions. The fuzzer object is a callable generator. Below is a basic example:
-
+To use CVSS Fuzz, import the package and use its provided functions.
 ```python
 from cvssfuzz import CVSSFuzz
 config = {'iterations': 10000, "category": "base", "fuzzer": "random", "version": "4.0"}

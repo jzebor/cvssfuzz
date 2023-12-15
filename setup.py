@@ -12,7 +12,7 @@ setup(
     packages=find_packages(),
     install_requires=[],
     entry_points={
-        'console_scripts': ["cvssfuzz=cli:main"]
+        'console_scripts': ["cvssfuzz=cvssfuzz.cli:main"]
     },
     python_requires=">=3.10",
     classifiers=[
