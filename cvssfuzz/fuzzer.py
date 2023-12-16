@@ -243,12 +243,12 @@ class CVSSFuzz:
     def run(self):
         """
         Generator that yields fuzzed CVSS vectors one at a time.
-        Caution: if you set iterations to 0, this will run forever and might use up all available memory on a system.
+        Caution: if you set count to 0, this will run forever and might use up all available memory on a system.
         """
-        if self.config.get('iterations') > 0:
-            for x in range(self.config['iterations']):
+        if self.config.get('count') > 0:
+            for x in range(self.config['count']):
                 yield self.__fuzz()
-        elif self.config.get('iterations') == 0: # run forever..... 
+        elif self.config.get('count') == 0: # run forever..... 
             while True:
                 yield self.__fuzz()
     

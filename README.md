@@ -20,7 +20,7 @@ pip install git+https://github.com/jzebor/cvzzfuzz
 To use CVSS Fuzz, import the package and use its provided functions.
 ```python
 from cvssfuzz import CVSSFuzz
-config = {'iterations': 10000, "category": "base", "fuzzer": "random", "version": "4.0"}
+config = {'count': 10000, "category": "base", "fuzzer": "random", "version": "4.0"}
 fuzzer = CVSSFuzz(config=config)
 for vector in fuzzer.run():
     print(vector) 
@@ -35,8 +35,8 @@ cvssfuzz --help
 ## Configuration
 CVSS Fuzz can be configured to suit various testing needs. Refer to the settings.py file for configurable parameters.
 
-### Iterations
-Iterations is just as it sounds. The option is for configuring the total of fuzzed vectors you want. Choosing a value of 0 causes it to run forever. CAUTION: Choosing a value of 0 can lead to out of memory conditions. Be mindful until I fix that part in the code.
+### Count
+Count is just as it sounds. The option is for configuring the total of fuzzed vectors you want. Choosing a value of 0 causes it to run forever. CAUTION: Choosing a value of 0 can lead to out of memory conditions. Be mindful until I fix that part in the code.
 
 ### Fuzzers
 Fuzzers can be configured to use one of the following options.
