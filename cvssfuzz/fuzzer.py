@@ -7,8 +7,9 @@ import logging
 from urllib.parse import quote
 
 from . import settings
+from . import log_settings
 
-settings.setup_logging()
+log_settings.setup_logging()
 LOG = logging.getLogger(__name__)
 
 class CVSSFuzz:
