@@ -8,7 +8,7 @@ def main():
     default_settings = {"count": 5, "fuzzer": "random", "category": "base", "version": "4.0"}
     available_fuzzers = ['random', 'shuffle', 'invalid', 'missing', 'insane', 'duplicate', 'lowercase', 'missing_prefix']
     available_categories = ['base', 'temporal', 'environmental', 'supplemental', 'all']
-    available_versions = ['2.0', '3.0', '4.0']
+    available_versions = ['2.0', '3.0', '3.1', '4.0']
 
     parser = argparse.ArgumentParser(description="CVSS Fuzz - for fuzzing CVSS vector strings.")
     parser.add_argument("--count", type=int, required=False, default=default_settings['count'], help="Count of outputs")

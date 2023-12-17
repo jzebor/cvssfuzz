@@ -46,6 +46,39 @@ metrics = {
             "supplemental": ["S", "AU", "R", "V", "RE", "U"]
         },
     },
+    "3.0": {
+        "identifier": "CVSS:3.0",
+        "values" : {
+            'AV': ['N', 'A', 'L', 'P'],
+            'AC': ['L', 'H'],
+            'PR': ['N', 'L', 'H'],
+            'UI': ['N', 'R'],
+            'S': ['C', 'U'],
+            'C': ['H', 'L', 'N'],
+            'I': ['H', 'L', 'N'],
+            'A': ['H', 'L', 'N'],
+            'E': ['X', 'H', 'F', 'P', 'U'],
+            'RL': ['X', 'U', 'W', 'T', 'O'],
+            'RC': ['X', 'C', 'R', 'U'],
+            'CR': ['X', 'H', 'M', 'L'],
+            'IR': ['X', 'H', 'M', 'L'],
+            'AR': ['X', 'H', 'M', 'L'],
+            'MAV': ['X', 'N', 'A', 'L', 'P'],
+            'MAC': ['X', 'L', 'H'],
+            'MPR': ['X', 'N', 'L', 'H'],
+            'MUI': ['X', 'N', 'R'],
+            'MS': ['X', 'C', 'U'],
+            'MC': ['X', 'H', 'L', 'N'],
+            'MI': ['X', 'H', 'L', 'N'],
+            'MA': ['X', 'H', 'L', 'N']
+    },
+    "categories" : {
+        "base": ["AV", "AC", "PR", "UI", "S", "C", "I", "A"],
+        "temporal": ["E", "RL", "RC"],
+        "environmental": ["CR", "IR", "AR", "MAV", "MAC", "MPR", "MUI", "MS", "MC", "MI", "MA"]
+    }
+    },
+
     "3.1": {
         "identifier": "CVSS:3.1",
         "values" : {

@@ -52,7 +52,7 @@ class CVSSFuzz:
                                     self.metric_categories['supplemental']
 
         #VERSION 3.1 SUPPORT
-        elif self.config['version'] == '3.1':
+        elif self.config['version'] == '3.0' or self.config['version'] == '3.1':
             match self.config['category']:
                 case 'all':
                     category_keys = self.metric_categories['base'] + \
