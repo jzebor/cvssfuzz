@@ -7,7 +7,7 @@ from cvssfuzz import CVSSFuzz
 def main():
     default_settings = {"count": 5, "fuzzer": "random", "category": "base", "version": "4.0"}
     available_fuzzers = ['random', 'shuffle', 'invalid', 'missing', 'insane', 'duplicate', 'lowercase', 'missing_prefix']
-    available_categories = ['base', 'temporal', 'environmental', 'all']
+    available_categories = ['base', 'temporal', 'environmental', 'supplemental', 'all']
     available_versions = ['2.0', '3.0', '4.0']
 
     parser = argparse.ArgumentParser(description="CVSS Fuzz - for fuzzing CVSS vector strings.")

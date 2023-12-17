@@ -237,7 +237,6 @@ class CVSSFuzz:
             case 'missing_prefix':
                 vector_string = self.get_random_combination()
                 return self.missing_prefix_combination(vector_string)
-            
             case _:
                 return self.get_random_combination()
 
