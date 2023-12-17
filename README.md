@@ -1,12 +1,12 @@
 # CVSS Fuzz
 
 ## Introduction
-CVSS Fuzz is a Python package designed for fuzzing implementations that utilize the Common Vulnerability Scoring System (CVSS). It aims to test and validate CVSS-related applications, ensuring robustness and reliability against a variety of inputs. Currently supports CVSS 4.0 and CVSS 3.1, CVSS 2.0.
+CVSS Fuzz is a Python package designed for fuzzing implementations that utilize the Common Vulnerability Scoring System (CVSS). It aims to test and validate CVSS-related applications, ensuring robustness and reliability against a variety of inputs. Supports all versions of CVSS except version 1.
 
 ## Features
 - Generation of fuzzed CVSS vectors.
 - Customizable fuzzing strategies.
-- Detailed logging and reporting.
+- Detailed logging and reporting. (WIP)
 - Import as module in your code or run from the command line.
 
 ## Installation
@@ -27,9 +27,13 @@ for vector in fuzzer.run():
     # your code here
 ```
 
-### As a stand-alone command line utility (Work in Progress)
+### As a stand-alone command line utility
 ```
 cvssfuzz --help
+cvssfuzz --count 1 --version 4.0
+cvssfuzz --count 100 --fuzzer insane --version 4.0 --category environmental
+cvssfuzz --count 5 --version 2.0
+
 ```
 
 ## Configuration
@@ -52,29 +56,29 @@ Fuzzers can be configured to use one of the following options.
 - missing_prefix: Drop the version prefix from the vector.
 
 ### Versions
-Versions dictate the version to use for fuzzing. Currently CVSS 4.0, CVSS 3.1, & CVSS 2.0 are supported.
+Versions dictate the version to use for fuzzing. Currently CVSS 4.0, CVSS 3.1, CVSS 3.0, & CVSS 2.0 are supported.
 
 ### Categories
 Categories are how you can define which specific metric groups to fuzz.
 
 #### CVSS 4.0
-- Base: Just the base metrics
-- Threat: Base + Threat
-- Environmental: Base + Environmental
-- Supplemental: Base + Threat + Environmental + Supplemental
-- All: Base + Threat + Environmental + Supplemental
+- base: Just the base metrics
+- threat: Base + Threat
+- environmental: Base + Environmental
+- supplemental: Base + Threat + Environmental + Supplemental
+- all: Base + Threat + Environmental + Supplemental
 
 #### CVSS 3.1
-- Base: Just the base metrics
-- Temporal: Base + Temporal
-- Environmental: Base + Environmental
-- All: Base + Temporal + Environmental
+- base: Just the base metrics
+- temporal: Base + Temporal
+- environmental: Base + Environmental
+- all: Base + Temporal + Environmental
 
 #### CVSS 2.0
-- Base: Just the base metrics
-- Temporal: Base + Temporal
-- Environmental: Base + Environmental
-- All: Base + Temporal + Environmental
+- base: Just the base metrics
+- temporal: Base + Temporal
+- environmental: Base + Environmental
+- all: Base + Temporal + Environmental
 
 ## Contributing
 Contributions to CVSS Fuzz are welcome!

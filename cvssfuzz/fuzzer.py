@@ -246,7 +246,7 @@ class CVSSFuzz:
         Caution: if you set count to 0, this will run forever and might use up all available memory on a system.
         """
         if self.config.get('count') > 0:
-            for x in range(self.config['count']):
+            for _ in range(self.config['count']):
                 yield self.__fuzz()
         elif self.config.get('count') == 0: # run forever..... 
             while True:
