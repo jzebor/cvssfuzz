@@ -49,11 +49,12 @@ Fuzzers can be configured to use one of the following options.
 - shuffle: Shuffles a randomly generated string.  All output should be valid CVSS vector strings, just in a shuffled order.
 - invalid: Insert an invalid metric value for a random metric.
 - insane: A random metric is chosen and substituted with an bad value (hex, url encoded, base64 encoded, etc)
-- missing: Drop a random metric from the vector.
 - duplicate: Duplicate a random metric from the vector.
-- lowecase: Lowercase a random metric from the vector.
+- lowercase: Lowercase a random metric from the vector.
 - missing: Drop a random metric from the vector.
 - missing_prefix: Drop the version prefix from the vector.
+- missing_metric_key: Drop a random metric _key_ from the vector.
+- missing_metric_value: Drop a random metric _value_ from the vector.
 
 ### Versions
 Versions dictate the version to use for fuzzing. Currently CVSS 4.0, CVSS 3.1, CVSS 3.0, & CVSS 2.0 are supported.

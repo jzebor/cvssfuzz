@@ -34,7 +34,7 @@ class CVSSFuzz:
         #VERSION 4.0 SUPPORT
         if self.config['version'] == '4.0':
             match self.config['category']:
-                case 'all' | 'supplemental':  # CVSS-BTE (with S)
+                case 'all':  # CVSS-BTE (with S)
                     category_keys = self.metric_categories['base'] + \
                                     self.metric_categories['threat'] + \
                                     self.metric_categories['environmental'] + \
@@ -43,6 +43,9 @@ class CVSSFuzz:
                     category_keys = self.metric_categories['base']
                 case 'threat': # CVSS-BT
                     category_keys = self.metric_categories['base'] + self.metric_categories['threat']
+                case 'supplemental': # CVSS-BS
+                    category_keys = self.metric_categories['base'] + self.metric_categories['supplemental']
+
                 case 'environmental': # CVSS-BE
                     category_keys = self.metric_categories['base'] + self.metric_categories['environmental']
                 case _:
@@ -208,37 +211,64 @@ class CVSSFuzz:
         kv_pairs.pop(0)
         final_string = '/'.join(kv_pairs)
         return final_string
-        
+
+    def missing_metric_key_combination(self, combination):
+        """
+        Generates a combination with a random metric missing the metric _key_.
+        CVSS tools should recognize these as invalid.
+        The range starts at 1 to avoid removing the CVSS version.
+        """
+        kv_pairs = combination.split('/')
+        random_index = random.randrange(1, len(kv_pairs))
+        _, value = kv_pairs[random_index].split(':')
+        kv_pairs[random_index] = f':{value}'
+        final_string = '/'.join(kv_pairs)
+        LOG.debug(f"Missing Key Key: {random_index} - Vector: {final_string}")
+        return final_string
+
+    def missing_metric_value_combination(self, combination):
+        """
+        Generates a combination with a random metric missing the _value_.
+        CVSS tools should recognize these as invalid.
+        The range starts at 1 to avoid removing the CVSS version.
+        """
+        kv_pairs = combination.split('/')
+        random_index = random.randrange(1, len(kv_pairs))
+        key, _ = kv_pairs[random_index].split(':')
+        kv_pairs[random_index] = f'{key}:'
+        final_string = '/'.join(kv_pairs)
+        LOG.debug(f"Missing Value Key: {random_index} - Vector: {final_string}")
+        return final_string
+
+
     def __fuzz(self):
         """
         Private method that calls the appropriate fuzzer based on the config.
         """
+        vector_string = self.get_random_combination()
         match self.config['fuzzer']:
             case 'random':  # default to random combos
-                return self.get_random_combination()
+                return vector_string
             case 'shuffle':
-                vector_string = self.get_random_combination()
                 return self.shuffle_combination(vector_string)
             case 'invalid':
-                vector_string = self.get_random_combination()
                 return self.invalid_combination(vector_string)
             case 'missing':
-                vector_string = self.get_random_combination()
                 return self.missing_combination(vector_string)
             case 'insane':
-                vector_string = self.get_random_combination()
                 return self.insane_combination(vector_string)
             case 'duplicate':
-                vector_string = self.get_random_combination()
                 return self.duplicate_entry_combination(vector_string)
             case 'lowercase':
-                vector_string = self.get_random_combination()
                 return self.lowercase_combination(vector_string)
             case 'missing_prefix':
-                vector_string = self.get_random_combination()
                 return self.missing_prefix_combination(vector_string)
+            case 'missing_metric_key':
+                return self.missing_metric_key_combination(vector_string)
+            case 'missing_metric_value':
+                return self.missing_metric_value_combination(vector_string)
             case _:
-                return self.get_random_combination()
+                return vector_string
 
     def run(self):
         """
